@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Components">
+        <item>"Decor"</item>
+        <item>"OtherSweets"</item>
+        <item>"ChocolateFigures"</item>
+        <item>"CaramelFigures"</item>
+        <item>"TortTypes"</item>
+        <item>"OneStoreySizes"</item>
+        <item>"MultiStoreySizes"</item>
+        <item>"Tastes"</item>
+    </string-array>
+
+    <string-array name="ComponentsRus">
+        <item>"Декор"</item>
+        <item>"Другие сладости"</item>
+        <item>"Шоколадные фигуры"</item>
+        <item>"Карамельные фигуры"</item>
+        <item>"Типы тортов"</item>
+        <item>"Размеры одноярусного торта"</item>
+        <item>"Веса многоярусного торта"</item>
+        <item>"Вкусы"</item>
+    </string-array>
+
+    <string-array name="Decor">
+        <item>"Меренги (безе)"</item>
+        <item>"Свежие ягоды"</item>
+        <item>"Шоколадыне фигуры"</item>
+        <item>"Крамельные фигуры"</item>
+        <item>"Рисунок (кремом/ красками)"</item>
+        <item>"Живые цветы"</item>
+        <item>"Надпись"</item>
+        <item>"Пустой торт"</item>
+        <item>"Топпер (пластик/дерево)"</item>
+        <item>"Съедобная печать"</item>
+        <item>"Сахарный лист"</item>
+        <item>"Цифра (пряник/изомальт/шоколад)"</item>
+        <item>"Фигурка (шоколад/мастика)"</item>
+        <item>"Подтеки (шоколад/карамель)"</item>
+        <item>"Конфеты, шоколадки"</item>
+        <item>"Кремовые цветы"</item>
+        <item>"Пряники"</item>
+        <item>"Зеркальная глазурь"</item>
+        <item>"Фактура мрамора/бетона"</item>
+        <item>"Другое (укажу в комментариях)"</item>
+    </string-array>
+    <string-array name="OtherSweets">
+        <item>"Капкейки"</item>
+        <item>"Трайфлы"</item>
+        <item>"Пирожные Анна Павлова"</item>
+        <item>"Безе на палочках"</item>
+        <item>"Кейк-попсы"</item>
+        <item>"Пончики из духовки"</item>
+        <item>"Зефир"</item>
+        <item>"Трюфели"</item>
+        <item>"Другое (укажу в комментариях)"</item>
+    </string-array>
+    <string-array name="ChocolateFigures">
+        <item>"Абстракция"</item>
+        <item>"Шары"</item>
+    </string-array>
+    <string-array name="CaramelFigures">
+        <item>"Леденцы"</item>
+        <item>"Ваза"</item>
+        <item>"Шары"</item>
+        <item>"Абстракция"</item>
+    </string-array>
+    <string-array name="TortTypes">
+        <item>Одноярусный торт</item>
+        <item>Многоярусный торт</item>
+    </string-array>
+    <string-array name="OneStoreySizes">
+        <item>"D 16 см (1,5 до 2 кг) , 7 до 10 порций"</item>
+        <item>"D 18 см (2 до 2,5 кг) , 10 до 12 порций"</item>
+        <item>"D 20 см (2,5 до 3 кг) , 12 до 15 порций"</item>
+        <item>"D 22 см (3,5 до 4 кг) , 15 до 20 порций"</item>
+        <item>"Другое (укажу в комментриях)"</item>
+    </string-array>
+    <string-array name="MultiStoreySizes">
+        <item>"20 человек / 4 кг"</item>
+        <item>"30 человек / 6 кг"</item>
+        <item>"40 человек / 8 кг"</item>
+        <item>"50 человек / 9 кг"</item>
+        <item>"60 человек / 12 кг"</item>
+        <item>"Другое (укажу в комментриях)"</item>
+    </string-array>
+    <string-array name="Tastes">
+        <item>"Шоколадный"</item>
+        <item>"Ягодный/фруктовый"</item>
+        <item>"Сливочный"</item>
+        <item>"Пряный"</item>
+        <item>"Добавить чизкейк в торт (от 700р к стоимости торта)"</item>
+    </string-array>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Тортики Анночки</string>
+    <string name="navigation_drawer_open">Открыть навигацию</string>
+    <string name="navigation_drawer_close">Закрыть навигацию</string>
+    <string name="nav_header_title">Тортики Анночки</string>
+    <string name="nav_header_desc">Навигация</string>
+    <string name="menu_home">Назад</string>
+    <string name="menu_gallery">Галерея</string>
+    <string name="menu_slideshow">Мои данные</string>
+    <string name="home_second">Описания</string>
+    <string name="action_settings">Настройки</string>
+    <string name="menu_components">Компоненты</string>
+    <string name="nav_header_subtitle">ya.nabodina@yandex.ru</string>
+</resources>
