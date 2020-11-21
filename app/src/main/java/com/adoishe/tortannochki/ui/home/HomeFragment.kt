@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.adoishe.tortannochki.DatabaseHelper
-import com.adoishe.tortannochki.MainActivity
 import com.adoishe.tortannochki.R
 
 class HomeFragment : Fragment() {

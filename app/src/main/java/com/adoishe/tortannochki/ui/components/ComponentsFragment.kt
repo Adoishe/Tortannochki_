@@ -89,8 +89,8 @@ class ComponentsFragment : Fragment() {
 
 
                 var dH =  DatabaseHelper(root.context)
-                val db   = dH.writableDatabase
-                val arrStrings = dH.componentsByName(db, selectedComponent)
+                //val db   = dH.writableDatabase
+                val arrStrings = dH.componentsByName(selectedComponent)
 
                 spinnerChildArray = arrStrings.toTypedArray()
 
