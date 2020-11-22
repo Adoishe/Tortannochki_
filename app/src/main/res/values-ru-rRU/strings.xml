@@ -7,9 +7,11 @@
     <string name="nav_header_desc">Навигация</string>
     <string name="menu_home">Назад</string>
     <string name="menu_gallery">Галерея</string>
-    <string name="menu_slideshow">Мои данные</string>
     <string name="home_second">Описания</string>
     <string name="action_settings">Настройки</string>
     <string name="menu_components">Компоненты</string>
     <string name="nav_header_subtitle">ya.nabodina@yandex.ru</string>
+    <string name="nameProfile">Введите ваше имя</string>
+    <string name="menu_profile">Мои данные</string>
+    <string name="menu_slideshow">Изображения</string>
 </resources>
