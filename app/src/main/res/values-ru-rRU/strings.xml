@@ -14,4 +14,8 @@
     <string name="nameProfile">Введите ваше имя</string>
     <string name="menu_profile">Мои данные</string>
     <string name="menu_slideshow">Изображения</string>
+    <string name="profileName">Имя</string>
+    <string name="profilePhone">Номер телефона</string>
+    <string name="profileE_mail">АДрес E-mail</string>
+    <string name="profileSave">Сохранить профиль</string>
 </resources>

@@ -16,8 +16,10 @@
     <string name="home_second">Home Second</string>
     <string name="menu_components">Components</string>
     <string name="nameProfile">Enter your name</string>
-
-
+    <string name="profileName">Name</string>
+    <string name="profilePhone">Phone</string>
+    <string name="profileE_mail">E-mail</string>
+    <string name="profileSave">Save profile</string>
 
 
 </resources>

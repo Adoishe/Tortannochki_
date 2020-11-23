@@ -3,6 +3,7 @@ package com.adoishe.tortannochki
 import android.content.ContentValues
 import android.content.Context
 import android.content.res.Resources
+import android.database.Cursor
 import android.database.DatabaseUtils
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -190,7 +191,18 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
 
         val db                      = this.writableDatabase
         var arrContentValues        = ArrayList<ContentValues>()
-        val c                       = db.rawQuery(selectQuery, null)
+
+        var  c : Cursor? = null
+
+        try {
+             c                       = db.rawQuery(selectQuery, null)
+        } catch (e: Exception){
+            println(e.message)
+
+            throw e
+        }
+
+
 
         if (c.moveToFirst())
             do {
@@ -220,15 +232,18 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
         return arrStrings
     }
 
-    public fun getProfileCV(db: SQLiteDatabase): ContentValues {
+    public fun getProfileCV(): ContentValues {
 
         var contentVal          : ContentValues = ContentValues()
         var arrContentValues     = ArrayList<ContentValues>()
+        val db = this.writableDatabase
 
-        arrContentValues = queryToArrContentValues( "Select name , PhoneNumber from Profile;")
+        arrContentValues = queryToArrContentValues( "Select name , PhoneNumber , jsonObject from Profiles;")
 
         if (arrContentValues.count() > 0)
             return arrContentValues[0]
+
+        db.close()
 
         return contentVal
     }

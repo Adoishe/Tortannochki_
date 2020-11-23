@@ -1,4 +1,4 @@
-package com.adoishe.tortannochki.ui.Profile
+package com.adoishe.tortannochki.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

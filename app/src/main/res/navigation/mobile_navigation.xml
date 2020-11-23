@@ -46,4 +46,10 @@
         android:name="com.adoishe.tortannochki.ui.components.ComponentsFragment"
         android:label="@string/menu_components"
         tools:layout="@layout/fragment_components" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.adoishe.tortannochki.ui.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
+
 </navigation>
