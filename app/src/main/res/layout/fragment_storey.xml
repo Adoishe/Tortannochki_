@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StoreyFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/oneStorey"
+            android:layout_width="237dp"
+            android:layout_height="231dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginBottom="100dp"
+            android:contentDescription="Многоярусный торт"
+            android:src="@drawable/kisspng_cupcake_clip_art_cake_decorating_red_velvet_cake_bakery_icons_6_247_free_vector_icons_page_20_5b6535b991cbf6_9078492515333595455972"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/multyStorey" />
+
+        <ImageView
+            android:id="@+id/multyStorey"
+            android:layout_width="255dp"
+            android:layout_height="325dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginBottom="42dp"
+            android:contentDescription="Одноярусный торт"
+            android:src="@drawable/kisspng_birthday_cake_cupcake_wedding_cake_cake_pop_5af33bf7651ba4_0311755115258900394142"
+            app:layout_constraintBottom_toTopOf="@+id/oneStorey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

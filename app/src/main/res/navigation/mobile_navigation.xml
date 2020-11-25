@@ -11,10 +11,12 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
 
+        <!--
         <action
             android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
+            app:destination="@id/nav_home_second" />-->
     </fragment>
+<!--
     <fragment
         android:id="@+id/nav_home_second"
         android:name="com.adoishe.tortannochki.ui.home.HomeSecondFragment"
@@ -28,6 +30,7 @@
             android:name="myArg"
             app:argType="string" />
     </fragment>
+-->
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -51,5 +54,74 @@
         android:name="com.adoishe.tortannochki.ui.profile.ProfileFragment"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.adoishe.tortannochki.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/sizeFragment"
+        android:name="com.adoishe.tortannochki.SizeFragment"
+        android:label="fragment_size"
+        tools:layout="@layout/fragment_size" >
+        <action
+            android:id="@+id/action_sizeFragment_to_tasteFragment"
+            app:destination="@id/tasteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/storeyFragment"
+        android:name="com.adoishe.tortannochki.StoreyFragment"
+        android:label="fragment_storey"
+        tools:layout="@layout/fragment_storey" >
+        <action
+            android:id="@+id/action_storeyFragment_to_sizeMultyStoreyFragment"
+            app:destination="@id/sizeMultyStoreyFragment" />
+        <action
+            android:id="@+id/action_storeyFragment_to_sizeFragment"
+            app:destination="@id/sizeFragment"
+
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/sizeMultyStoreyFragment"
+        android:name="com.adoishe.tortannochki.SizeMultyStoreyFragment"
+        android:label="fragment_size_multy_storey"
+        tools:layout="@layout/fragment_size_multy_storey" >
+        <action
+            android:id="@+id/action_sizeMultyStoreyFragment_to_tasteFragment"
+            app:destination="@id/tasteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tasteFragment"
+        android:name="com.adoishe.tortannochki.TasteFragment"
+        android:label="fragment_taste"
+        tools:layout="@layout/fragment_taste" >
+        <action
+            android:id="@+id/action_tasteFragment_to_decorFragment"
+            app:destination="@id/decorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/decorFragment"
+        android:name="com.adoishe.tortannochki.DecorFragment"
+        android:label="fragment_decor"
+        tools:layout="@layout/fragment_decor" >
+        <action
+            android:id="@+id/action_decorFragment_to_otherSweetsFragment"
+            app:destination="@id/otherSweetsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otherSweetsFragment"
+        android:name="com.adoishe.tortannochki.OtherSweetsFragment"
+        android:label="fragment_other_sweets"
+        tools:layout="@layout/fragment_other_sweets" >
+        <action
+            android:id="@+id/action_otherSweetsFragment_to_deliveryFragment"
+            app:destination="@id/deliveryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deliveryFragment"
+        android:name="com.adoishe.tortannochki.DeliveryFragment"
+        android:label="fragment_delivery"
+        tools:layout="@layout/fragment_delivery" />
 
 </navigation>

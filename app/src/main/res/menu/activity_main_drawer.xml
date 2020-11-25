@@ -8,6 +8,7 @@
             android:id="@+id/nav_home"
             android:icon="@android:drawable/ic_menu_today"
             android:title="@string/menu_home" />
+        <!--
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
@@ -16,14 +17,21 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
+
         <item
             android:id="@+id/nav_components"
             android:icon="@android:drawable/btn_star"
             android:title="@string/menu_components" />
+            -->
         <item
             android:id="@+id/nav_profile"
             android:icon="@android:drawable/ic_menu_edit"
             android:title="@string/menu_profile" />
+
+        <item
+            android:id="@+id/storeyFragment"
+            android:icon="@android:drawable/btn_star"
+            android:title="@string/order" />
 
     </group>
 </menu>

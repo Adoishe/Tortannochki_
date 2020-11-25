@@ -121,7 +121,6 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
             doTable(tables[resId] , resIndex)
         }
 
-
         // profile
         createProfile(db)
 
@@ -131,20 +130,13 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
         // Orders
         createOrders(db)
 
-       //db.close()
-
     }
 
     fun deleteTables(db: SQLiteDatabase?) {
 
-       // val db = this.writableDatabase
-
-
-
-        var resCount    : Int = 11
-        var resid       : Int = 0
-        var resIndex    : Int = 0
-
+        var resCount    : Int           = 11
+        var resid       : Int           = 0
+        var resIndex    : Int           = 0
         var tables      : Array<String> = arrayOf(
             "Decor"
             ,"OtherSweets"
@@ -163,11 +155,9 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
             db?.execSQL("DROP TABLE IF EXISTS " + tables[resId])
         }
 
-        //db.close()
     }
 
-    //public fun queryToArrContentValues(db: SQLiteDatabase, selectQuery : String): ArrayList<ContentValues>{
-    public fun queryToArrContentValues(selectQuery : String): ArrayList<ContentValues>{
+    fun queryToArrContentValues(selectQuery : String): ArrayList<ContentValues>{
 
         val db                      = this.writableDatabase
         var arrContentValues        = ArrayList<ContentValues>()
@@ -199,7 +189,7 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
 
     }
 
-    public fun arrContentValuesToArrayListString(arrCV: ArrayList<ContentValues>, name : String): ArrayList<String>{
+    fun arrContentValuesToArrayListString(arrCV: ArrayList<ContentValues>, name : String): ArrayList<String>{
         val arrStrings: ArrayList<String>   = ArrayList()
 
         for (componentCV in arrCV ){
@@ -226,8 +216,7 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
 
     public fun componentsByName( name : String): ArrayList<String>{
 
-        val db = this.writableDatabase
-
+        val db                                 = this.writableDatabase
         val selectQuery                     = "Select title from $name;"
         var arrContentValues                = ArrayList<ContentValues>()
         var arrStrings: ArrayList<String>   = ArrayList()
@@ -237,39 +226,6 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
         db.close()
 
         return arrStrings
-        /*
-        for (componentCV in arrContentValues ){
-            arrStrings.add(componentCV.getAsString("title"))
-        }
-
-
-         */
-
-        /*
-        val selectQuery                     = "Select title from $name;"
-        val c                       = db.rawQuery(selectQuery, null)
-        var arrContentValues                = ArrayList<ContentValues>()
-        val arrStrings: ArrayList<String>   = ArrayList()
-
-        if (c.moveToFirst())
-            do {
-                var contentVal          : ContentValues = ContentValues()
-                // запись в формат структуры
-                DatabaseUtils.cursorRowToContentValues(c, contentVal)
-                // структру в массив структуру
-                arrContentValues.add(contentVal)
-
-            } while (c.moveToNext())
-
-        c.close()
-        db.close()
-*/
-
-
-
-
-
-
     }
 
     override fun onCreate(db: SQLiteDatabase?){
@@ -279,11 +235,6 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
         deleteTables(db)
-//        // TODO Auto-generated method stub
-//        Log.w("TestBase", "Upgrading database from version " + oldVersion
-//                + " to " + newVersion + ", which will destroy all old data");
-//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-//        onCreate(db);
         createTables(db)
     }
 
@@ -297,6 +248,7 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
         private val KEY_PRESSURE        = "pressure"
         private val KEY_PERIOD          = "period"
 
+            /*
         private val CREATE_TABLE_PRESSURES = ("CREATE TABLE "
                 + TABLE_PRESSURES
                 + "("
@@ -318,7 +270,7 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
         private val COUNT_TABLE_PRESSURES = ("SELECT COUNT(*)  as COUNT FROM "
                 + TABLE_PRESSURES
                 + ";"
-                )
+                )*/
     }
 
 }

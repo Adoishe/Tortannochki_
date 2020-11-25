@@ -18,4 +18,5 @@
     <string name="profilePhone">Номер телефона</string>
     <string name="profileE_mail">АДрес E-mail</string>
     <string name="profileSave">Сохранить профиль</string>
+    <string name="order">Order</string>
 </resources>
