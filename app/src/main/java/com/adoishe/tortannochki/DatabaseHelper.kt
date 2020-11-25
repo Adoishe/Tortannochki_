@@ -12,19 +12,7 @@ import android.util.Log
 //public class DatabaseHelper(context: Context, var db: SQLiteDatabase?) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
-    //    private final Context fContext;
     var fContext : Context = context
-
-    //    private static final String DATABASE_NAME = "cat_database.db";
-
-//    public static final String TABLE_NAME = "cattable";
-
-//    DatabaseHelper(Context context) {
-//        super(context, DATABASE_NAME, null, 1);
-//        fContext = context;
-//    }
-
-
 
     init {
 
@@ -33,9 +21,6 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
 
     fun createProfile(db: SQLiteDatabase?) {
 
-       // val db = this.writableDatabase
-
-
         db?.execSQL("CREATE TABLE "
                 + "Profiles"
                 + " ("
@@ -43,14 +28,12 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
                 + ",name TEXT"
                 + ",PhoneNumber TEXT"
                 + ",jsonObject TEXT"
-                + ") WITHOUT ROWID;")
+            //+ ") WITHOUT ROWID;")
+                + ")  ;")
 
-        //db.close()
     }
 
     fun createAddresses(db: SQLiteDatabase?) {
-
-        //val db = this.writableDatabase
 
         db?.execSQL("CREATE TABLE "
                 + "Addresses"
@@ -59,14 +42,12 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
                 + ",Address TEXT"
                 + ",ProfileId BLOB"
                 + ",AddressName TEXT"
-                + ") WITHOUT ROWID;")
-        //db.close()
+                ///+ ") WITHOUT ROWID;")
+                + ") ;")
 
     }
 
     fun createOrders(db: SQLiteDatabase?) {
-
-        //val db = this.writableDatabase
 
         db?.execSQL("CREATE TABLE "
                 + "Orders"
@@ -76,8 +57,8 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
                 + ",ProfileId BLOB"
                 + ",Timeto TEXT"
                 + ",Comment TEXT"
-                + ") WITHOUT ROWID;")
-        //db.close()
+               // + ") WITHOUT ROWID;")
+                + ") ;")
 
     }
 
@@ -88,7 +69,7 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
         var resCount    : Int = 8
         var resid       : Int = 0
         var resIndex    : Int = 0
-        var resou       : Resources = fContext.getResources()
+        var resou       : Resources = fContext.resources
 
         fun doTable(tableName : String , resId : Int){
 
@@ -107,7 +88,8 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
 //                            + "_id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "_id BLOB PRIMARY KEY DEFAULT (randomblob(16)),"
                     + "title TEXT"
-                    + ") WITHOUT ROWID;")
+                   // + ") WITHOUT ROWID;")
+                    + ") ;")
 
             for ( i in  0 ..length - 1) {
 
@@ -116,8 +98,6 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
                 db?.insert(tableName, null, values);
             }
         }
-
-
 
         var tables : Array<String>
 
@@ -191,18 +171,16 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
 
         val db                      = this.writableDatabase
         var arrContentValues        = ArrayList<ContentValues>()
-
-        var  c : Cursor? = null
+        var  c : Cursor?            = null
 
         try {
-             c                       = db.rawQuery(selectQuery, null)
+             c = db.rawQuery(selectQuery, null)
         } catch (e: Exception){
+
             println(e.message)
 
             throw e
         }
-
-
 
         if (c.moveToFirst())
             do {
@@ -228,17 +206,15 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
             arrStrings.add(componentCV.getAsString(name))
         }
 
-
         return arrStrings
     }
 
     public fun getProfileCV(): ContentValues {
 
         var contentVal          : ContentValues = ContentValues()
-        var arrContentValues     = ArrayList<ContentValues>()
-        val db = this.writableDatabase
-
-        arrContentValues = queryToArrContentValues( "Select name , PhoneNumber , jsonObject from Profiles;")
+        var arrContentValues    = ArrayList<ContentValues>()
+        val db                  = this.writableDatabase
+        arrContentValues        = queryToArrContentValues( "Select hex(_id) as _id, name , PhoneNumber , jsonObject from Profiles;")
 
         if (arrContentValues.count() > 0)
             return arrContentValues[0]
@@ -253,13 +229,10 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
         val db = this.writableDatabase
 
         val selectQuery                     = "Select title from $name;"
-        // val c                       = db.rawQuery(selectQuery, null)
         var arrContentValues                = ArrayList<ContentValues>()
         var arrStrings: ArrayList<String>   = ArrayList()
-
-        arrContentValues = queryToArrContentValues(selectQuery)
-
-        arrStrings = arrContentValuesToArrayListString(arrContentValues , "title")
+        arrContentValues                    = queryToArrContentValues(selectQuery)
+        arrStrings                          = arrContentValuesToArrayListString(arrContentValues , "title")
 
         db.close()
 
@@ -318,7 +291,7 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
 
         var arrTables                   = ArrayList<ContentValues>()
         var DATABASE_NAME               = "tortannochki_db"
-        private val DATABASE_VERSION    = 2
+        private val DATABASE_VERSION    = 3
         private val TABLE_PRESSURES     = "pressures"
         private val KEY_ID              = "id"
         private val KEY_PRESSURE        = "pressure"

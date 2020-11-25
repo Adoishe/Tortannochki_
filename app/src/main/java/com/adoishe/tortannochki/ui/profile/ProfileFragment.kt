@@ -30,9 +30,9 @@ class ProfileFragment : Fragment() {
         pofileViewModel.text.observe(viewLifecycleOwner, Observer {
                                                                         textView.text = it })
 
-        var profileName : TextView = root.findViewById(R.id.Name)
-        var profilePhone : EditText = root.findViewById(R.id.Phone)
-        var profileEmail : EditText = root.findViewById(R.id.Email)
+        var profileName : TextView = root.findViewById(R.id.editTextName)
+        var profilePhone : EditText = root.findViewById(R.id.editTextPhone)
+        var profileEmail : EditText = root.findViewById(R.id.editTextEmail)
 
         var profile : Profile = Profile()
 
@@ -52,22 +52,22 @@ class ProfileFragment : Fragment() {
 
         }
 
-
-
         profileEmail.setText(jsonString)
 
-        val button : Button =  root.findViewById(R.id.butonSaveProfile)
+        val button : Button =  root.findViewById(R.id.buttonSaveProfile)
 
         button.setOnClickListener{
 
             profile.setName(profileName.text.toString())
-            profile.setPhone(profileName.text.toString().toInt())
+            profile.setPhone(profilePhone.text.toString().toInt())
 
             var jsonObject = JSONObject()
 
-            jsonObject.put("Email", profileEmail.toString())
+            jsonObject.put("Email", profileEmail.text.toString())
 
             profile.setJSONObject(jsonObject)
+
+            profile.writeProfile(context!!)
 
         }
 
