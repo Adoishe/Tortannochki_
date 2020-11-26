@@ -84,7 +84,7 @@ class ComponentsFragment : Fragment() {
 
                 toast.show()
 
-                var dH              =  DatabaseHelper(root.context)
+                var dH              = DatabaseHelper(root.context)
                 val arrStrings      = dH.componentsByName(selectedComponent)
                 spinnerChildArray   = arrStrings.toTypedArray()
 

@@ -63,11 +63,7 @@
         android:id="@+id/sizeFragment"
         android:name="com.adoishe.tortannochki.SizeFragment"
         android:label="fragment_size"
-        tools:layout="@layout/fragment_size" >
-        <action
-            android:id="@+id/action_sizeFragment_to_tasteFragment"
-            app:destination="@id/tasteFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_size" />
     <fragment
         android:id="@+id/storeyFragment"
         android:name="com.adoishe.tortannochki.StoreyFragment"
@@ -77,10 +73,8 @@
             android:id="@+id/action_storeyFragment_to_sizeMultyStoreyFragment"
             app:destination="@id/sizeMultyStoreyFragment" />
         <action
-            android:id="@+id/action_storeyFragment_to_sizeFragment"
-            app:destination="@id/sizeFragment"
-
-            />
+            android:id="@+id/action_storeyFragment_to_tasteFragment"
+            app:destination="@id/tasteFragment" />
     </fragment>
     <fragment
         android:id="@+id/sizeMultyStoreyFragment"

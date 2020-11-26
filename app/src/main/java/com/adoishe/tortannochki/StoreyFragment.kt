@@ -39,23 +39,21 @@ class StoreyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val root = inflater.inflate(R.layout.fragment_storey, container, false)
-
-        var oneStorey : ImageView = root.findViewById(R.id.oneStorey)
-        var multyStorey : ImageView = root.findViewById(R.id.multyStorey)
-        var navController: NavController
-        navController = Navigation.findNavController(this.activity!!, R.id.nav_host_fragment);
-
-        val bundle = Bundle()
-
-
+        val root                            = inflater.inflate(R.layout.fragment_storey, container, false)
+        val bundle                          = Bundle()
+        var oneStorey : ImageView           = root.findViewById(R.id.singleStoreyPic)
+        var multyStorey : ImageView         = root.findViewById(R.id.multyStoreyPic)
+        var navController: NavController    = Navigation.findNavController(
+                                                    this.activity!!,
+                                                    R.id.nav_host_fragment
+                                                )
 
         oneStorey.setOnClickListener{
 
             storeysQty = 0
 
             bundle.putInt("storeysQty", storeysQty)
-            navController.navigate(R.id.sizeFragment, bundle);
+            navController.navigate(R.id.tasteFragment, bundle);
         }
 
         multyStorey.setOnClickListener{
@@ -63,10 +61,9 @@ class StoreyFragment : Fragment() {
             storeysQty = 1
 
             bundle.putInt("storeysQty", storeysQty)
+            navController.navigate(R.id.sizeMultyStoreyFragment, bundle)
 
-            navController.navigate(R.id.sizeMultyStoreyFragment, bundle);
         }
-
 
         return root
     }

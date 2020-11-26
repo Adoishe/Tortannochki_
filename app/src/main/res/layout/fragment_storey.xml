@@ -5,42 +5,80 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StoreyFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+<!---
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />
 
+
+        -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/storeyLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/singleStoreyText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:text="@string/singleStorey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.47"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"/>
+
         <ImageView
-            android:id="@+id/oneStorey"
-            android:layout_width="237dp"
-            android:layout_height="231dp"
-            android:layout_marginTop="42dp"
+            android:id="@+id/singleStoreyPic"
+            android:layout_width="0dp"
+            android:layout_height="269dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/singleStorey"
+            android:gravity="center"
+
+            android:src="@drawable/kisspng_birthday_cake_cupcake_wedding_cake_cake_pop_5af33bf7651ba4_0311755115258900394142"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/singleStoreyText" />
+
+        <TextView
+            android:id="@+id/multyStoreyText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:text="@string/multyStorey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/singleStoreyPic"
+            android:gravity="center"/>
+
+        <ImageView
+            android:id="@+id/multyStoreyPic"
+            android:layout_width="405dp"
+            android:layout_height="237dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="100dp"
-            android:contentDescription="Многоярусный торт"
+            android:contentDescription="@string/multyStorey"
+            android:gravity="center"
             android:src="@drawable/kisspng_cupcake_clip_art_cake_decorating_red_velvet_cake_bakery_icons_6_247_free_vector_icons_page_20_5b6535b991cbf6_9078492515333595455972"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.563"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/multyStorey" />
+            app:layout_constraintTop_toBottomOf="@+id/multyStoreyText"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <ImageView
-            android:id="@+id/multyStorey"
-            android:layout_width="255dp"
-            android:layout_height="325dp"
-            android:layout_marginTop="55dp"
-            android:layout_marginBottom="42dp"
-            android:contentDescription="Одноярусный торт"
-            android:src="@drawable/kisspng_birthday_cake_cupcake_wedding_cake_cake_pop_5af33bf7651ba4_0311755115258900394142"
-            app:layout_constraintBottom_toTopOf="@+id/oneStorey"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
