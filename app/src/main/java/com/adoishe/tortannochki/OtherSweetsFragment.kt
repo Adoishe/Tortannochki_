@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Spinner
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,6 +21,7 @@ class OtherSweetsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    var spinnerInitializedTimes: Int   = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +36,20 @@ class OtherSweetsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_other_sweets, container, false)
+        var root                = inflater.inflate(R.layout.fragment_other_sweets, container, false)
+        val spinner : Spinner = root.findViewById(R.id.otherSweetsSpinner)
+
+        spinner.setSelection(0, false);
+
+        spinner.post { spinner.onItemSelectedListener = Common4Fragments(
+            this,
+            0,
+            R.id.mapsFragment,
+            spinnerInitializedTimes
+        ).getListener() }
+
+
+        return root
     }
 
     companion object {

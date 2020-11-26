@@ -27,6 +27,7 @@ class TasteFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var storeysQty: Int? = null
+    var spinnerInitializedTimes: Int   = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,25 +37,9 @@ class TasteFragment : Fragment() {
             storeysQty = it.getInt("storeysQty")
         }
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val root                            = inflater.inflate(R.layout.fragment_taste, container, false)
-
-        val spinner : Spinner               = root.findViewById(R.id.tasteSpinner)
-
-        var spinnerInitializedTimes: Int   = 0
-        /*
-            val arrTastes : Array<String>       = this.activity?.resources!!.getStringArray(R.array.Tastes)
-            val adapter: ArrayAdapter<String>   = ArrayAdapter<String>(this.context!!, R.layout.taste_spinner, R.id.tasteSpinner, arrTastes)
-            spinner.adapter                     = adapter
-    */
-
-
-        val listener = object : AdapterView.OnItemSelectedListener {
+/*
+    private fun getListener() : AdapterView.OnItemSelectedListener{
+        return object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?
                 , itemSelected: View?
@@ -62,7 +47,7 @@ class TasteFragment : Fragment() {
                 , selectedId: Long
             ) {
 
-                val choose              = resources.getStringArray(R.array.Components)
+                val choose              = resources.getStringArray(R.array.Tastes)
                 val selectedComponent   = choose[selectedItemPosition]
                 //var arrResultStrings          = ArrayList<String>()
                 val toast               = Toast.makeText(
@@ -105,14 +90,33 @@ class TasteFragment : Fragment() {
                 spinnerInitializedTimes++
 
 
-
-
-
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
+    }
+    */
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val root                            = inflater.inflate(R.layout.fragment_taste, container, false)
+        val spinner : Spinner               = root.findViewById(R.id.tasteSpinner)
 
-        spinner.onItemSelectedListener = listener
+
+        /*
+            val arrTastes : Array<String>       = this.activity?.resources!!.getStringArray(R.array.Tastes)
+            val adapter: ArrayAdapter<String>   = ArrayAdapter<String>(this.context!!, R.layout.taste_spinner, R.id.tasteSpinner, arrTastes)
+            spinner.adapter                     = adapter
+    */
+        spinner.setSelection(0, false);
+
+    spinner.post { spinner.onItemSelectedListener = Common4Fragments(
+        this,
+        R.array.Tastes,
+        R.id.decorFragment,
+        spinnerInitializedTimes
+    ).getListener() }
 
 
 
