@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.activity_profile.*
 import java.util.*
 
 class Common4Fragments {
@@ -66,10 +67,16 @@ class Common4Fragments {
                 */
                 //if (spinnerInitializedTimes == 1)
                // {
+
                     if ( stringsResource != 0) {
 
                         val choose = fragment.activity!!.resources.getStringArray(stringsResource)
                         val selectedComponent = choose[selectedItemPosition]
+
+                        (fragment.activity as MainActivity).order.bodyJson.put(fragment.javaClass.simpleName, selectedComponent )
+
+                        fragment.arguments!!.putString(fragment.javaClass.simpleName , selectedComponent )
+
                         val toast = Toast.makeText(
                             fragment.context!!,
                             "Ваш выбор: $selectedComponent", Toast.LENGTH_SHORT
@@ -79,7 +86,7 @@ class Common4Fragments {
                     navController.navigate(targetFragment, fragment.arguments)
                // }
 
-                spinnerInitializedTimes++
+               // spinnerInitializedTimes++
 
 
             }

@@ -18,6 +18,8 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
     lateinit var mMapView: MapView//? = null
     private var googleMap: GoogleMap? = null
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -115,7 +117,7 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
         googleMap!!.uiSettings.isMyLocationButtonEnabled = true;
         googleMap!!.uiSettings.isMapToolbarEnabled = true;
         googleMap!!.uiSettings.isZoomControlsEnabled = true;
-        googleMap!!.isMyLocationEnabled = true;
+        //googleMap!!.isMyLocationEnabled = true;
         googleMap!!.isTrafficEnabled = true;
         googleMap!!.isIndoorEnabled = true;
         googleMap!!.isBuildingsEnabled = true;

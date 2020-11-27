@@ -43,7 +43,7 @@ class OtherSweetsFragment : Fragment() {
 
         spinner.post { spinner.onItemSelectedListener = Common4Fragments(
             this,
-            0,
+            R.array.OtherSweets,
             R.id.mapsFragment,
             spinnerInitializedTimes
         ).getListener() }

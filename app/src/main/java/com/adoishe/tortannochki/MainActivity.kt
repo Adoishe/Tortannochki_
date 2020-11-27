@@ -13,32 +13,47 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
-
+import kotlinx.android.synthetic.main.app_bar_main.*
 
 
 class MainActivity (private var databaseHelper: DatabaseHelper? = null): AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    lateinit var profile: Profile
+    lateinit var order: Order
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+
+        profile = Profile()
+
+        profile.readProfile(this)
+
+        order = Order(profile)
+
+
         setContentView(R.layout.activity_main)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
 
         setSupportActionBar(toolbar)
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-
         val drawerLayout: DrawerLayout  = findViewById(R.id.drawer_layout)
         val navView: NavigationView     = findViewById(R.id.nav_view)
         val navController               = findNavController(R.id.nav_host_fragment)
+        val fab: FloatingActionButton   = findViewById(R.id.fab)
+
+        fab.setOnClickListener { view ->
+
+            navController.navigate(R.id.orderFragment)
+                /*
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+
+                 */
+        }
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
