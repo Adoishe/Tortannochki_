@@ -8,41 +8,52 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 import java.util.*
 
 class Common4Fragments {
 
-    var fragment : Fragment
-     var stringsResource : Int
-     var targetFragment: Int
-    var spinnerInitializedTimes : Int
+    lateinit var fragment : Fragment
+     var stringsResource : Int = 0
+    var targetFragment: Int = 0
+    var step : String = ""
 
-    constructor(fragment : Fragment, stringsResource : Int, targetFragment: Int , spinnerInitializedTimes : Int ){
+    constructor(fragment : Fragment, stringsResource : Int, targetFragment: Int , step : String ){
 
         this.fragment = fragment
         this.stringsResource = stringsResource
         this.targetFragment = targetFragment
-        this.spinnerInitializedTimes = spinnerInitializedTimes
+        this.step = step
+
+    }
+ /*
+    constructor(step : String){
+
+        fragment.requireActivity().toolbar.title = step
 
     }
 
 
+
+    fun setTtile() {
+
+    }
+
+  */
+
     public fun getListener() : AdapterView.OnItemSelectedListener{
         return object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>?
-                , itemSelected: View?
-                , selectedItemPosition: Int
-                , selectedId: Long
+                parent: AdapterView<*>?,
+                itemSelected: View?,
+                selectedItemPosition: Int,
+                selectedId: Long
             ) {
-
-
-
 
 
                //val bundle                          = Bundle()
                 var navController: NavController = Navigation.findNavController(
-                    fragment.activity!!,
+                    fragment.requireActivity(),
                     R.id.nav_host_fragment
                 )
                 //bundle.putString("selectedComponent", selectedComponent)
@@ -70,15 +81,15 @@ class Common4Fragments {
 
                     if ( stringsResource != 0) {
 
-                        val choose = fragment.activity!!.resources.getStringArray(stringsResource)
+                        val choose = fragment.requireActivity().resources.getStringArray(stringsResource)
                         val selectedComponent = choose[selectedItemPosition]
 
-                        (fragment.activity as MainActivity).order.bodyJson.put(fragment.javaClass.simpleName, selectedComponent )
+                        (fragment.activity as MainActivity).order.bodyJson.put(step, selectedComponent )
 
-                        fragment.arguments!!.putString(fragment.javaClass.simpleName , selectedComponent )
+                        fragment.requireArguments().putString(fragment.javaClass.simpleName , selectedComponent )
 
                         val toast = Toast.makeText(
-                            fragment.context!!,
+                            fragment.requireContext(),
                             "Ваш выбор: $selectedComponent", Toast.LENGTH_SHORT
                         )
                         toast.show()

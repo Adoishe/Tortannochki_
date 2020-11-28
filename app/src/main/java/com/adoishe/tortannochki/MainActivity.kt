@@ -6,14 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.app_bar_main.*
 
 
 class MainActivity (private var databaseHelper: DatabaseHelper? = null): AppCompatActivity() {
@@ -43,7 +43,31 @@ class MainActivity (private var databaseHelper: DatabaseHelper? = null): AppComp
         val drawerLayout: DrawerLayout  = findViewById(R.id.drawer_layout)
         val navView: NavigationView     = findViewById(R.id.nav_view)
         val navController               = findNavController(R.id.nav_host_fragment)
-        val fab: FloatingActionButton   = findViewById(R.id.fab)
+        val fab: ExtendedFloatingActionButton = findViewById(R.id.fab)
+        val fabSkip: ExtendedFloatingActionButton = findViewById(R.id.fabSkip)
+
+        fabSkip.setOnClickListener { view ->
+
+            when ((navController.currentDestination as FragmentNavigator.Destination).className) {
+                "com.adoishe.tortannochki.TasteFragment" -> navController.navigate(R.id.decorFragment)
+                "com.adoishe.tortannochki.DecorFragment" -> navController.navigate(R.id.otherSweetsFragment)
+                "com.adoishe.tortannochki.OtherSweetsFragment" -> navController.navigate(R.id.mapsFragment)
+
+                else -> { // Note the block
+                    print("x is neither 1 nor 2")
+                }
+            }
+
+
+
+
+
+            /*
+        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            .setAction("Action", null).show()
+
+             */
+        }
 
         fab.setOnClickListener { view ->
 
@@ -54,6 +78,8 @@ class MainActivity (private var databaseHelper: DatabaseHelper? = null): AppComp
 
                  */
         }
+
+
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

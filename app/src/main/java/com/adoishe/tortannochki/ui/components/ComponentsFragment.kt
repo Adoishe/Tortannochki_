@@ -49,6 +49,7 @@ class ComponentsFragment : Fragment() {
 
         val arrDecors: MutableList<String>  = ArrayList()
         var arrResultStrings                = ArrayList<String>()
+        /*
         fabButton                           = activity!!.findViewById<FloatingActionButton>(R.id.fab)
 
         fabButton.setOnClickListener { //анимация скрытия Floating Action Button
@@ -64,6 +65,8 @@ class ComponentsFragment : Fragment() {
 
             }
         }
+
+         */
         // создаем адаптер
 
         val listener = object : AdapterView.OnItemSelectedListener {

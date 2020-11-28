@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Spinner
+import kotlinx.android.synthetic.main.app_bar_main.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +22,8 @@ class OtherSweetsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var step: String? = null
+
     var spinnerInitializedTimes: Int   = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,14 +42,19 @@ class OtherSweetsFragment : Fragment() {
         var root                = inflater.inflate(R.layout.fragment_other_sweets, container, false)
         val spinner : Spinner = root.findViewById(R.id.otherSweetsSpinner)
 
+        step = resources.getString(R.string.otherSweets)
+
+        this.requireActivity().toolbar.title = step
+
         spinner.setSelection(0, false);
 
         spinner.post { spinner.onItemSelectedListener = Common4Fragments(
             this,
             R.array.OtherSweets,
             R.id.mapsFragment,
-            spinnerInitializedTimes
+            step!!
         ).getListener() }
+
 
 
         return root

@@ -18,7 +18,12 @@
     <string name="profilePhone">Номер телефона</string>
     <string name="profileE_mail">АДрес E-mail</string>
     <string name="profileSave">Сохранить профиль</string>
-    <string name="order">Order</string>
+    <string name="order">Заказ</string>
     <string name="singleStorey">Один ярус</string>
     <string name="multyStorey">Несолько ярусов</string>
+    <string name="orderView">Открыть заказ</string>
+    <string name="taste">Вкус</string>
+    <string name="decor">Декор</string>
+    <string name="otherSweets">Другие сладости</string>
+    <string name="skipFragment">Пропустить выбор</string>
 </resources>

@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.fragment_order.*
 import org.json.JSONObject
 
@@ -55,6 +56,7 @@ class OrderFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var step: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +86,9 @@ class OrderFragment : Fragment() {
         orderRecViewElem.layoutManager          = LinearLayoutManager(this.context)
         orderRecViewElem.adapter                = CustomRecyclerAdapter(fillList())
 
+        step = resources.getString(R.string.order)
 
+        this.requireActivity().toolbar.title = step
 
         return root
     }
