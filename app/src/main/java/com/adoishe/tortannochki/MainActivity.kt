@@ -19,7 +19,6 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity (private var databaseHelper: DatabaseHelper? = null): AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-
     lateinit var profile: Profile
     lateinit var order: Order
 
@@ -33,18 +32,17 @@ class MainActivity (private var databaseHelper: DatabaseHelper? = null): AppComp
 
         order = Order(profile)
 
-
         setContentView(R.layout.activity_main)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
 
         setSupportActionBar(toolbar)
 
-        val drawerLayout: DrawerLayout  = findViewById(R.id.drawer_layout)
-        val navView: NavigationView     = findViewById(R.id.nav_view)
-        val navController               = findNavController(R.id.nav_host_fragment)
-        val fab: ExtendedFloatingActionButton = findViewById(R.id.fab)
-        val fabSkip: ExtendedFloatingActionButton = findViewById(R.id.fabSkip)
+        val drawerLayout: DrawerLayout              = findViewById(R.id.drawer_layout)
+        val navView: NavigationView                 = findViewById(R.id.nav_view)
+        val navController                           = findNavController(R.id.nav_host_fragment)
+        val fab: ExtendedFloatingActionButton       = findViewById(R.id.fab)
+        val fabSkip: ExtendedFloatingActionButton   = findViewById(R.id.fabSkip)
 
         fabSkip.setOnClickListener { view ->
 
@@ -58,14 +56,9 @@ class MainActivity (private var databaseHelper: DatabaseHelper? = null): AppComp
                 }
             }
 
-
-
-
-
             /*
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
             .setAction("Action", null).show()
-
              */
         }
 
@@ -79,8 +72,6 @@ class MainActivity (private var databaseHelper: DatabaseHelper? = null): AppComp
                  */
         }
 
-
-
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout)
@@ -90,9 +81,6 @@ class MainActivity (private var databaseHelper: DatabaseHelper? = null): AppComp
 
         databaseHelper  = DatabaseHelper(this)
 
-        //val db   = databaseHelper!!.writableDatabase
-
-//        databaseHelper!!.createTables()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

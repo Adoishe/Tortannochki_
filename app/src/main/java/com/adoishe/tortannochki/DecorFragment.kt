@@ -27,6 +27,11 @@ class DecorFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        arguments = Bundle().apply {
+            putString(ARG_PARAM1, param1)
+            putString(ARG_PARAM2, param2)
+        }
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)

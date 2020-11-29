@@ -28,10 +28,19 @@ class OtherSweetsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        arguments = Bundle().apply {
+            putString(ARG_PARAM1, param1)
+            putString(ARG_PARAM2, param2)
+        }
+
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
+
     }
 
     override fun onCreateView(
@@ -48,14 +57,14 @@ class OtherSweetsFragment : Fragment() {
 
         spinner.setSelection(0, false);
 
-        spinner.post { spinner.onItemSelectedListener = Common4Fragments(
-            this,
-            R.array.OtherSweets,
-            R.id.mapsFragment,
-            step!!
-        ).getListener() }
-
-
+        spinner.post {
+            spinner.onItemSelectedListener = Common4Fragments(
+                        this,
+                        R.array.OtherSweets,
+                        R.id.mapsFragment,
+                        step!!
+                    ).getListener()
+        }
 
         return root
     }
