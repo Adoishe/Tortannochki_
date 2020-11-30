@@ -9,6 +9,7 @@
 
 
     <TableLayout
+        android:id="@+id/tableHead"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,14 +101,29 @@
                 android:layout_height="wrap_content"
                 android:text="@string/profileSave" />
         </TableRow>
+        <TableRow>
+            <Button
+                android:id="@+id/buttonAddAddress"
+
+                android:text="@string/addAddress"
+
+                app:layout_constraintTop_toBottomOf="@id/tableHead" />
+
+            <TableLayout
+                android:id="@+id/tableAddresses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/buttonAddAddress"
+                app:layout_constraintStart_toStartOf="@+id/buttonAddAddress"
+
+             >
+            </TableLayout>
+    </TableRow>
     </TableLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

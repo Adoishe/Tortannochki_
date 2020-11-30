@@ -43,37 +43,20 @@ class Profile {
 
     fun fillProfile(contentValue: ContentValues) {
 
-        try {
-            _id        = contentValue.getAsString("_id")
-        }catch (e: Exception)
-        {
-            _id        = ""
-        }
+        try {            _id        = contentValue.getAsString("_id")        }catch (e: Exception)
+        {            _id        = ""        }
 
+        try {            name        = contentValue.getAsString("name")        }catch (e: Exception)
+        {            name        = ""        }
 
-        try {
-            name        = contentValue.getAsString("name")
-        }catch (e: Exception)
-        {
-            name        = ""
-        }
+        try {            phone       = contentValue.getAsInteger("phone")        }catch (e: Exception)
+        {            phone       = 0        }
 
         try {
-            phone       = contentValue.getAsInteger("phone")
-        }catch (e: Exception)
-        {
-            phone       = 0
-        }
-
-        try {
-
             val jsonString  = contentValue.getAsString("jsonObject")
             jsonObject = JSONObject(jsonString)
-
         }catch (e: Exception)
-        {
-            this.jsonObject = JSONObject()
-        }
+        {            this.jsonObject = JSONObject()        }
 
     }
 
@@ -127,6 +110,16 @@ class Profile {
         val profileCV       = databaseHelper.getProfileCV()
 
         fillProfile(profileCV)
+    }
+
+    fun readAddresses(context: Context) : ArrayList<ContentValues> {
+
+        val databaseHelper  = DatabaseHelper(context)
+
+        val query = "select Address, AddressName from Addresses where hex(ProfileId) =  \"$_id\";"
+
+        return databaseHelper.queryToArrContentValues(query)
+
     }
 
 

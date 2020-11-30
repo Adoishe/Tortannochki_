@@ -26,4 +26,5 @@
     <string name="decor">Декор</string>
     <string name="otherSweets">Другие сладости</string>
     <string name="skipFragment">Пропустить выбор</string>
+    <string name="addAddress">Добавить адрес</string>
 </resources>

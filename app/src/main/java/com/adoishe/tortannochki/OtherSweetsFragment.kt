@@ -61,7 +61,7 @@ class OtherSweetsFragment : Fragment() {
             spinner.onItemSelectedListener = Common4Fragments(
                         this,
                         R.array.OtherSweets,
-                        R.id.mapsFragment,
+                        R.id.deliveryFragment,
                         step!!
                     ).getListener()
         }

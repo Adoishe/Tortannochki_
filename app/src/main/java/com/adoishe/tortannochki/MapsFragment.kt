@@ -2,9 +2,10 @@ package com.adoishe.tortannochki
 
 
 import android.Manifest
-
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,11 +14,19 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.common.api.Status
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.Autocomplete
+import com.google.android.libraries.places.widget.AutocompleteActivity
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.android.material.snackbar.Snackbar
-
+import java.util.*
 
 class MapsFragment : Fragment() , OnMapReadyCallback {
 
@@ -28,13 +37,15 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
     private val REQUEST_CAMERA_PERMISSION = 1
     private val REQUEST_ACCESS_FINE_LOCATION = 2
     private val REQUEST_ACCESS_COARSE_LOCATION = 3
+    var PLACE_PICKER_REQUEST = 1
 
-
+    var lat : Double = 0.0
+    var lng : Double = 0.0
     /**
      * @param view
      * @brief requestForCameraPermission
      */
-    fun requestForLocationPermission(view: View?, permission : String) {
+    fun requestForLocationPermission(view: View?, permission: String) {
         //Log.v(TAG, "Requesting Camera Permission")
         if (ContextCompat.checkSelfPermission(requireActivity(), permission)
             != PackageManager.PERMISSION_GRANTED
@@ -81,7 +92,22 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
     }
 
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PLACE_PICKER_REQUEST) {
+            if (resultCode == Activity.RESULT_OK) {
+                val place =Autocomplete.getPlaceFromIntent(data!!);
 
+                lat = place.latLng!!.latitude
+                lng = place.latLng!!.longitude
+            }
+            else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
+                // TODO: Handle the error.
+                var status = Autocomplete.getStatusFromIntent(data!!)
+               // Log.i("address", status.getStatusMessage());
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -95,6 +121,38 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
 
 
         requestForLocationPermission(rootView, "android.Manifest.permission.ACCESS_COARSE_LOCATION")
+
+
+        if (!Places.isInitialized()) Places.initialize(this.requireContext(),
+            getString(R.string.google_maps_key),
+            Locale.US)
+
+        var fields=Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG)
+        var intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields).build(this.requireContext())
+        startActivityForResult(intent, PLACE_PICKER_REQUEST)
+
+
+        val mAddressEditText = childFragmentManager.findFragmentById(R.id.address) as AutocompleteSupportFragment
+
+        mAddressEditText.setPlaceFields(Arrays.asList(Place.Field.ADDRESS, Place.Field.LAT_LNG))
+        mAddressEditText.setHint("Address")
+        mAddressEditText.setText("Test1") // Works fine at the beginning, disappears after selecting a place and shows only the hint
+
+        mAddressEditText.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            override fun onPlaceSelected(place: Place) {
+                // Log.d(TAG, "Place Selected")
+                // Other Stuff
+                mAddressEditText.setText("Test2") // Doesn't Work, all I can see is the hint
+                mAddressEditText.setText(place.address) // Doesn't Work, all I can see is the hint
+            }
+
+            override fun onError(status: Status) {
+             println("An error occurred: $status")
+
+            // Log.e(TAG, "An error occurred: $status")
+                //  invalidAddressDialog.show()
+            }
+        })
 
 
 /*
@@ -234,7 +292,7 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
     }
 
 
-    /*
+
     override fun onResume() {
         super.onResume()
         mMapView!!.onResume()
@@ -255,7 +313,7 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
         mMapView!!.onLowMemory()
     }
 
-     */
+
 
 /*
     private val callback = OnMapReadyCallback { googleMap ->
@@ -277,19 +335,25 @@ class MapsFragment : Fragment() , OnMapReadyCallback {
 */
 
 
-     override fun onRequestPermissionsResult(requestCode: Int,
-                                              permissions: Array<String>, grantResults: IntArray) {
+     override fun onRequestPermissionsResult(
+         requestCode: Int,
+         permissions: Array<String>, grantResults: IntArray
+     ) {
          when (requestCode) {
              REQUEST_ACCESS_FINE_LOCATION -> {
 
                  if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
 
-                     Snackbar.make(this.requireView(), "Permission has been denied by user", Snackbar.LENGTH_LONG)
+                     Snackbar.make(this.requireView(),
+                         "Permission has been denied by user",
+                         Snackbar.LENGTH_LONG)
                          .setAction("Action", null).show()
 
 
                  } else {
-                     Snackbar.make(this.requireView(), "Permission has been granted by user", Snackbar.LENGTH_LONG)
+                     Snackbar.make(this.requireView(),
+                         "Permission has been granted by user",
+                         Snackbar.LENGTH_LONG)
                          .setAction("Action", null).show()
 
                      googleMap!!.uiSettings.isMyLocationButtonEnabled = true;

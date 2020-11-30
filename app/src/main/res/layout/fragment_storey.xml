@@ -36,13 +36,13 @@
             android:id="@+id/singleStoreyPic"
             android:layout_width="0dp"
             android:layout_height="269dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="2dp"
             android:contentDescription="@string/singleStorey"
             android:gravity="center"
 
-            android:src="@drawable/kisspng_birthday_cake_cupcake_wedding_cake_cake_pop_5af33bf7651ba4_0311755115258900394142"
+            android:src="@drawable/single_storey"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/singleStoreyText" />
 
@@ -67,7 +67,7 @@
             android:layout_marginBottom="100dp"
             android:contentDescription="@string/multyStorey"
             android:gravity="center"
-            android:src="@drawable/kisspng_cupcake_clip_art_cake_decorating_red_velvet_cake_bakery_icons_6_247_free_vector_icons_page_20_5b6535b991cbf6_9078492515333595455972"
+            android:src="@drawable/multy_storey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.563"

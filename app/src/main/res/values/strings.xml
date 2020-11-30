@@ -30,6 +30,7 @@
     <string name="decor">Decor</string>
     <string name="otherSweets">Other Sweets</string>
     <string name="skipFragment">Skip</string>
+    <string name="addAddress">Add new address</string>
 
 
 </resources>
