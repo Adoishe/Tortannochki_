@@ -15,15 +15,36 @@ class Common4Fragments {
 
     lateinit var fragment : Fragment
      var stringsResource : Int = 0
+   lateinit var stringsResourceArr : Array<String>
     var targetFragment: Int = 0
     var step : String = ""
+      var fragmentSequence : Boolean
+
+    var  selectedItemIndex : Int = -1
+
+
 
     constructor(fragment : Fragment, stringsResource : Int, targetFragment: Int , step : String ){
 
         this.fragment = fragment
         this.stringsResource = stringsResource
+
         this.targetFragment = targetFragment
         this.step = step
+
+        fragmentSequence = true
+
+    }
+
+    constructor(fragment : Fragment, stringsResource : Array<String>, targetFragment: Int , step : String ){
+
+        this.fragment = fragment
+        this.stringsResourceArr = stringsResource
+        this.targetFragment = targetFragment
+        this.step = step
+
+        fragmentSequence = false
+
 
     }
  /*
@@ -79,22 +100,54 @@ class Common4Fragments {
                 //if (spinnerInitializedTimes == 1)
                // {
 
-                    if ( stringsResource != 0) {
+                    if ( stringsResource == 0) {
 
-                        val choose = fragment.requireActivity().resources.getStringArray(stringsResource)
-                        val selectedComponent = choose[selectedItemPosition]
+                        if(!fragmentSequence){
 
-                        (fragment.activity as MainActivity).order.bodyJson.put(step, selectedComponent )
+                            val selectedComponent = stringsResourceArr[selectedItemPosition]
 
-                        fragment.requireArguments().putString(fragment.javaClass.simpleName , selectedComponent )
+                            val toast = Toast.makeText(
+                                fragment.requireContext(),
+                                "Ваш выбор адреса: $selectedComponent", Toast.LENGTH_SHORT
+                            )
+                            toast.show()
 
-                        val toast = Toast.makeText(
-                            fragment.requireContext(),
-                            "Ваш выбор: $selectedComponent", Toast.LENGTH_SHORT
-                        )
-                        toast.show()
+                            (fragment as DeliveryFragment).selectedItemIndex = selectedItemPosition
+
+                            (fragment as DeliveryFragment).textViewSelectedAddrr.text = (fragment as DeliveryFragment).arrAddrs[selectedItemPosition]
+
+                        }
+
                     }
-                    navController.navigate(targetFragment, fragment.arguments)
+                    else{
+
+                        if(fragmentSequence) {
+
+                            var choose =
+                                fragment.requireActivity().resources.getStringArray(stringsResource)
+
+
+                            val selectedComponent = choose[selectedItemPosition]
+
+                            (fragment.activity as MainActivity).order.bodyJson.put(step,
+                                selectedComponent)
+
+                            fragment.requireArguments()
+                                .putString(fragment.javaClass.simpleName, selectedComponent)
+
+                            val toast = Toast.makeText(
+                                fragment.requireContext(),
+                                "Ваш выбор: $selectedComponent", Toast.LENGTH_SHORT
+                            )
+                            toast.show()
+                            navController.navigate(targetFragment, fragment.arguments)
+                        }
+                        else{
+
+
+                        }
+                    }
+
                // }
 
                // spinnerInitializedTimes++

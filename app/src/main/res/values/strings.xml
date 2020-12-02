@@ -31,6 +31,11 @@
     <string name="otherSweets">Other Sweets</string>
     <string name="skipFragment">Skip</string>
     <string name="addAddress">Add new address</string>
+    <string name="addressName">Address name</string>
+    <string name="address">Address</string>
+    <string name="EnterAddress">Enter address</string>
+    <string name="selectAddress">Selct address</string>
+    <string name="delivery">Delivery</string>
 
 
 </resources>

@@ -157,6 +157,27 @@ public class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABA
 
     }
 
+    fun deleteProfileAddresses (profile: Profile){
+
+        var _id = profile.getid()
+        val db  = this.writableDatabase
+
+        db?.execSQL("delete from Addresses where ProfileId = \"$_id\"" )
+    }
+
+    fun insertProfileAddresses(profile: Profile, arrProfileAddresses : ArrayList<ContentValues>){
+
+        val db  = this.writableDatabase
+
+        for(addrCV  in arrProfileAddresses) {
+
+            addrCV.put("Profileid" , profile.getid())
+
+            db.insert("Addresses", null , addrCV)
+        }
+
+    }
+
     fun queryToArrContentValues(selectQuery : String): ArrayList<ContentValues>{
 
         val db                      = this.writableDatabase

@@ -20,6 +20,11 @@ class Profile {
 
         return this.phone
     }
+    fun  getid () : String {
+
+        return this._id
+    }
+
 
     fun  getJSONObject () : JSONObject {
 
@@ -74,7 +79,7 @@ class Profile {
         return cv
     }
 
-    fun writeProfile(context: Context) {
+    fun writeProfile(context: Context , addressArrCV : ArrayList<ContentValues>) {
 
        //var cv               = cvFromProfile ()
         val databaseHelper  = DatabaseHelper(context)
@@ -103,6 +108,8 @@ class Profile {
 
         databaseHelper.writableDatabase.execSQL(query)
 
+        writeAddresses(context, addressArrCV)
+
     }
 
     fun readProfile(context: Context) {
@@ -116,9 +123,22 @@ class Profile {
 
         val databaseHelper  = DatabaseHelper(context)
 
-        val query = "select Address, AddressName from Addresses where hex(ProfileId) =  \"$_id\";"
+        val query = "select Address, AddressName from Addresses where Profileid =  \"$_id\";"
 
         return databaseHelper.queryToArrContentValues(query)
+
+    }
+
+    fun writeAddresses (context: Context, arrProfileAddresses : ArrayList < ContentValues>){
+
+        val databaseHelper  = DatabaseHelper(context)
+
+        databaseHelper.deleteProfileAddresses(this)
+
+
+        databaseHelper.insertProfileAddresses(this, arrProfileAddresses)
+
+
 
     }
 

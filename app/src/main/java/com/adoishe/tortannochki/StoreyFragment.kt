@@ -46,7 +46,7 @@ class StoreyFragment : Fragment() {
         var oneStorey : ImageView           = root.findViewById(R.id.singleStoreyPic)
         var multyStorey : ImageView         = root.findViewById(R.id.multyStoreyPic)
         var navController: NavController    = Navigation.findNavController(
-                                                    this.activity!!,
+                                                    this.requireActivity(),
                                                     R.id.nav_host_fragment
                                                 )
 

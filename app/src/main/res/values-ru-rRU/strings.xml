@@ -27,4 +27,9 @@
     <string name="otherSweets">Другие сладости</string>
     <string name="skipFragment">Пропустить выбор</string>
     <string name="addAddress">Добавить адрес</string>
+    <string name="addressName">Место</string>
+    <string name="address">Адрес</string>
+    <string name="EnterAddress">Введите адрес</string>
+    <string name="selectAddress">Выберите адрес</string>
+    <string name="delivery">Доставка</string>
 </resources>
